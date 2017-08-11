@@ -11,7 +11,7 @@ fix_date <- function(date) {
 }
 
 lm_10k <-
-    read_csv("data/LM_10X_Summaries_2016.csv") %>%
+    read_csv("data/LM_10X_Summaries_2016.csv.gz") %>%
     fix_names() %>%
     mutate(filing_date = fix_date(filing_date),
            fye = fix_date(fye))
