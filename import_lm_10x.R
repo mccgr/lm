@@ -14,7 +14,9 @@ lm_10k <-
     read_csv("data/LM_10X_Summaries_2016.csv.gz") %>%
     fix_names() %>%
     mutate(filing_date = fix_date(filing_date),
-           fye = fix_date(fye))
+           fye = fix_date(fye),
+           file_name = gsub("^.*edgar_data_(\\d+)_(\\d{10}-\\d{2}-\\d{6}).*$",
+                            "edgar/data/\\1/\\2.txt", file_name))
 
 # Push data to database ----
 library(RPostgreSQL)
